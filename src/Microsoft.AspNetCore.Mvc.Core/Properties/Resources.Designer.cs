@@ -1211,7 +1211,7 @@ namespace Microsoft.AspNetCore.Mvc.Core
         }
 
         /// <summary>
-        /// Having multiple overloads of method '{0}' is not supported.
+        /// Multiple overloads of method '{0}' are not supported.
         /// </summary>
         internal static string MiddewareFilter_ConfigureMethodOverload
         {
@@ -1219,7 +1219,7 @@ namespace Microsoft.AspNetCore.Mvc.Core
         }
 
         /// <summary>
-        /// Having multiple overloads of method '{0}' is not supported.
+        /// Multiple overloads of method '{0}' are not supported.
         /// </summary>
         internal static string FormatMiddewareFilter_ConfigureMethodOverload(object p0)
         {
@@ -1259,7 +1259,7 @@ namespace Microsoft.AspNetCore.Mvc.Core
         }
 
         /// <summary>
-        /// '{0}' property cannot be null.
+        /// The '{0}' property cannot be null.
         /// </summary>
         internal static string MiddlewareFilterBuilder_NullApplicationBuilder
         {
@@ -1267,7 +1267,7 @@ namespace Microsoft.AspNetCore.Mvc.Core
         }
 
         /// <summary>
-        /// '{0}' property cannot be null.
+        /// The '{0}' property cannot be null.
         /// </summary>
         internal static string FormatMiddlewareFilterBuilder_NullApplicationBuilder(object p0)
         {
