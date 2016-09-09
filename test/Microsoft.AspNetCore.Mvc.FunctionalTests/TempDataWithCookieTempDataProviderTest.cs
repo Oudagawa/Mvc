@@ -172,6 +172,37 @@ namespace Microsoft.AspNetCore.Mvc.FunctionalTests
             Assert.Equal($"Foo 10 3 10/10/2010 00:00:00 {testGuid.ToString()}", body);
         }
 
+        [Fact]
+        public async Task TempData_SetInActionResultExecution_AvailableForNextRequest()
+        {
+            // Arrange
+            var nameValueCollection = new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string, string>("Name", "Jordan"),
+            };
+            var content = new FormUrlEncodedContent(nameValueCollection);
+
+            // Act 1
+            var response = await Client.GetAsync("/TempData/SetTempDataInActionResult");
+
+            // Assert 1
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+            // Act 2
+            response = await Client.SendAsync(GetRequest("TempData/GetTempDataInActionResult", response));
+
+            // Assert 2
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            var body = await response.Content.ReadAsStringAsync();
+            Assert.Equal("Michael", body);
+
+            // Act 3
+            response = await Client.SendAsync(GetRequest("TempData/GetTempDataInActionResult", response));
+
+            // Assert 3
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+        }
+
         private HttpRequestMessage GetRequest(string path, HttpResponseMessage response)
         {
             var request = new HttpRequestMessage(HttpMethod.Get, path);
